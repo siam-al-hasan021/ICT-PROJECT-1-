@@ -1,0 +1,280 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX_LENGTH 100
+#define FILE_NAME "entries.txt"
+
+char **customEntries = NULL;
+int entryCount = 0;
+
+void showIntroduction() {
+    printf("\n--- Introduction ---\n");
+    printf("Manikganj is a district in central Bangladesh, located on the banks of the Jamuna River.\n");
+    printf("It is known for its historical significance, natural beauty, and cultural heritage.It was established in 1845 as a subdivision of Faridpur District, then in 1953, it was transferred to Dhaka District for administrative purposes. Finally in 1984, Manikganj was declared a full district.  \n");
+    printf("There are seven subdistricts in Manikganj. There are- \n");
+    printf("1. Manikganj Sadar Upazila.\n");
+    printf("2. Singair Upazila.\n");
+    printf("3. Saturia Upazila.\n");
+    printf("4. Daulatpur Upazila.\n");
+    printf("5. Ghior Upazila.\n");
+    printf("6. Harirampur Upazila.\n");
+    printf("7. Shivalaya Upazila.\n");
+    printf("Manikganj district has three parliamentary seats.\n");
+}
+
+void showHistory() {
+    printf("\n--- History ---\n");
+    printf("Manikganj has a rich history, dating back to the Mughal period. \n");
+    printf("It played a significant role during the Liberation War of Bangladesh in 1971. Manikganj subdivision was established in 1845. It was transferred from Faridpur District to Dhaka District in 1853. In 1984, Manikganj subdivision was promoted to a full district. The 1971 liberation war in Manikganj District was led by local heroes such as Abdul Halim Chowdhury, Abdul Matin Chowdhury, and Principal Abdur Rouf Khan. A significant battle occurred on 29 October 1971 in Singair Upazila, where freedom fighters, led by Engr Tobarak Hossain Ludu, ambushed Pakistani soldiers on the Nuruni Ganga canal, killing 81 soldiers without any losses on their side. However, Pakistani forces retaliated by burning 160 houses and killing 9 locals in Golaidanga village. Singair Upazila was liberated on 13 November 1971. By late November, freedom fighters secured more victories across Manikganj. On 14 December 1971, Pakistani troops retreated from Barundi village after encountering liberation forces led by Shahadat Hossain Biswas Badal, leading to the arrest of two soldiers. Manikganj was declared free on 13 December 1971.  \n");
+}
+
+void showTouristSpots() {
+    printf("\n--- Tourist Spots ---\n");
+    printf("1. Baliati Zamindar Bari - A grand palace showcasing the legacy of zamindars.\n");
+    printf("2. Teota Zamindar Bari - Another historic palace with architectural beauty.\n");
+    printf("3. Padma River - A popular spot for enjoying the natural beauty of the river.\n");
+    printf("4. Padmar Par, Harirampur.\n");
+    printf("5. Taota Noboratna Modh, Shibalaya.\n");
+    printf("6. Narayan Sadhur Asrom.\n");
+    printf("7. Betila Zamindar Bari.\n");
+    printf("8. Historical Shrine and Mosque of Machaine Village.\n");
+    printf("9. Beutha Bridge- A magnificent tourist spot. \n");
+    printf("10. Mowtto er Motth. \n");
+    printf("11. Nahar Garden.\n");
+}
+
+void showCulture() {
+    printf("\n--- Culture ---\n");
+    printf("Manikganj is known for its vibrant culture, including traditional music, dance, and festivals.The culture of Manikganj is a harmonious blend of history, art, music, festivals, and customs that reflect the lives and values of its people.\n");
+    printf("Historical and Religious Influence: The culture of Manikganj is deeply rooted in its history. The district has been influenced by various historical periods, including the Mughal era, British colonial rule, and the liberation struggle of 1971. These historical events have shaped the traditions and values of the people. Religion also plays a significant role in the cultural fabric of Manikganj. The majority of the population is Muslim, and Islamic festivals such as Eid-ul-Fitr and Eid-ul-Adha are celebrated with great enthusiasm. Hindu communities also celebrate Durga Puja, Kali Puja, and other religious festivals, showcasing the district's religious harmony and diversity.\n");
+    printf("Festivals and Fairs:Festivals and fairs are an essential part of Manikganj's culture. The *Rash Mela*, a traditional fair held in honor of Lord Krishna, is one of the most significant cultural events in the district. It attracts thousands of visitors from across the country. The *Nouka Baich* (boat race) is another popular event, reflecting the district's connection with its rivers. During the monsoon season, colorful boats race on the Padma and Ichamati rivers, accompanied by folk music and cheers from spectators. Other fairs, such as *Charak Mela* and *Poush Mela*, showcase traditional crafts, food, and cultural performances.\n");
+    printf("Traditional Crafts and Cuisine:Manikganj is also known for its traditional crafts, particularly pottery and weaving. The village of *Baliati* is famous for its terracotta pottery, which is both functional and artistic. Handloom weaving is another traditional craft, with local artisans producing beautiful sarees and fabrics. The cuisine of Manikganj reflects the simplicity and richness of rural life. Traditional dishes like *panta bhat* (fermented rice), *hilsha fish curry*, and various sweets made from rice and molasses are popular among the locals.\n");
+    printf("Language and Literature:The people of Manikganj primarily speak Bengali, the official language of Bangladesh. The district has a rich literary tradition, with many poets, writers, and intellectuals contributing to Bengali literature. Folk tales, proverbs, and oral traditions are an integral part of the local culture, passed down through generations. The works of local poets and writers often reflect the natural beauty, struggles, and aspirations of the people of Manikganj.\n");
+    printf("Liberation War Legacy:The culture of Manikganj is also shaped by its role in the 1971 Liberation War of Bangladesh. The bravery and sacrifices of the freedom fighters from this region are remembered with pride. Monuments and memorials dedicated to the martyrs serve as a reminder of the district's contribution to the nation's independence. The spirit of patriotism and resilience continues to inspire the people of Manikganj.\n");
+
+    printf("The district is famous for its handloom weaving and pottery crafts.The culture of Manikganj is a beautiful tapestry of history, tradition, and community. Its folk music, festivals, crafts, and cuisine reflect the simplicity and richness of rural life, while its religious harmony and literary heritage highlight the intellectual and spiritual depth of its people. As a district that played a significant role in the liberation of Bangladesh, Manikganj's culture is also a testament to the courage and resilience of its inhabitants. Preserving and promoting this cultural heritage is essential to keeping the identity of Manikganj alive for future generation.\n");
+}
+
+void provideName() {
+    char name[50];
+    printf("\nEnter your name: ");
+    if (scanf(" %[^\n]", name) != 1) {
+        printf("Invalid input.\n");
+        return;
+    }
+    printf("Hello, %s! Welcome to the Manikganj District Information Console App! Dive into the heart of a land rich in history, culture, and natural beauty. Whether you are exploring its vibrant traditions, heroic past, or scenic landscapes, Manikganj has something extraordinary to offer. Let's get started!\n", name);
+}
+
+void addEntry() {
+    char temp[MAX_LENGTH];
+
+    printf("\nEnter the new entry: ");
+    if (scanf(" %[^\n]", temp) != 1) {
+        printf("Invalid input.\n");
+        return;
+    }
+
+    char **newEntries = realloc(customEntries, (entryCount + 1) * sizeof(char *));
+    if (!newEntries) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+    customEntries = newEntries;
+
+    customEntries[entryCount] = malloc(strlen(temp) + 1);
+    if (!customEntries[entryCount]) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    strcpy(customEntries[entryCount], temp);
+    entryCount++;
+
+    printf("Entry added successfully.\n");
+}
+
+void removeEntry() {
+    if (entryCount == 0) {
+        printf("No entries to remove.\n");
+        return;
+    }
+
+    int index;
+    printf("\nEnter the index of the entry to remove (1-%d): ", entryCount);
+    if (scanf("%d", &index) != 1 || index < 1 || index > entryCount) {
+        printf("Invalid index.\n");
+        return;
+    }
+
+    free(customEntries[index - 1]);
+
+    for (int i = index - 1; i < entryCount - 1; i++) {
+        customEntries[i] = customEntries[i + 1];
+    }
+
+    entryCount--;
+    customEntries = realloc(customEntries, entryCount * sizeof(char *));
+    if (entryCount > 0 && !customEntries) {
+        printf("Memory reallocation failed.\n");
+    }
+
+    printf("Entry removed successfully.\n");
+}
+
+void modifyEntry() {
+    if (entryCount == 0) {
+        printf("No entries to modify.\n");
+        return;
+    }
+
+    int index;
+    char newEntry[MAX_LENGTH];
+
+    printf("\nEnter the index of the entry to modify (1-%d): ", entryCount);
+    if (scanf("%d", &index) != 1 || index < 1 || index > entryCount) {
+        printf("Invalid index.\n");
+        return;
+    }
+
+    printf("Enter the new content: ");
+    if (scanf(" %[^\n]", newEntry) != 1) {
+        printf("Invalid input.\n");
+        return;
+    }
+
+    char *newStr = malloc(strlen(newEntry) + 1);
+    if (!newStr) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    free(customEntries[index - 1]);
+    customEntries[index - 1] = newStr;
+    strcpy(customEntries[index - 1], newEntry);
+
+    printf("Entry modified successfully.\n");
+}
+
+void showEntries() {
+    if (entryCount == 0) {
+        printf("\nNo entries to display.\n");
+        return;
+    }
+
+    printf("\n--- Custom Entries ---\n");
+    for (int i = 0; i < entryCount; i++) {
+        printf("%d. %s\n", i + 1, customEntries[i]);
+    }
+}
+
+void saveEntriesToFile() {
+    FILE *file = fopen(FILE_NAME, "w");
+    if (!file) {
+        printf("Failed to open file for writing.\n");
+        return;
+    }
+
+    for (int i = 0; i < entryCount; i++) {
+        if (fprintf(file, "%s\n", customEntries[i]) < 0) {
+            printf("Error writing to file.\n");
+            fclose(file);
+            return;
+        }
+    }
+
+    fclose(file);
+    printf("Entries saved to '%s' successfully.\n", FILE_NAME);
+}
+
+void loadEntriesFromFile() {
+    FILE *file = fopen(FILE_NAME, "r");
+    if (!file) {
+        return;
+    }
+
+    char temp[MAX_LENGTH];
+    while (fgets(temp, MAX_LENGTH, file)) {
+        temp[strcspn(temp, "\n")] = '\0';
+
+        char **newEntries = realloc(customEntries, (entryCount + 1) * sizeof(char *));
+        if (!newEntries) {
+            printf("Memory allocation failed while loading.\n");
+            fclose(file);
+            return;
+        }
+        customEntries = newEntries;
+
+        customEntries[entryCount] = malloc(strlen(temp) + 1);
+        if (!customEntries[entryCount]) {
+            printf("Memory allocation failed.\n");
+            fclose(file);
+            return;
+        }
+
+        strcpy(customEntries[entryCount], temp);
+        entryCount++;
+    }
+
+    fclose(file);
+}
+
+void deleteAllEntries() {
+    for (int i = 0; i < entryCount; i++) {
+        free(customEntries[i]);
+    }
+
+    free(customEntries);
+    customEntries = NULL;
+    entryCount = 0;
+
+    FILE *file = fopen(FILE_NAME, "w");
+    if (file) fclose(file);
+
+    printf("All entries have been deleted.\n");
+}
+
+int main() {
+    int choice;
+
+    loadEntriesFromFile();
+    provideName();
+
+    do {
+        printf("\n=== Manikganj Information App ===\n");
+        printf("1. Introduction\n");
+        printf("2. History\n");
+        printf("3. Tourist Spots\n");
+        printf("4. Culture\n");
+        printf("5. Add Entry\n");
+        printf("6. Remove Entry\n");
+        printf("7. Modify Entry\n");
+        printf("8. Show Entries\n");
+        printf("9. Save Entries to File\n");
+        printf("10. Delete All Entries\n");
+        printf("11. Exit\n");
+        printf("Enter your choice (1-11): ");
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter a number.\n");
+            while (getchar() != '\n'); // Clear input buffer
+            continue;
+        }
+
+        switch (choice) {
+            case 1: showIntroduction(); break;
+            case 2: showHistory(); break;
+            case 3: showTouristSpots(); break;
+            case 4: showCulture(); break;
+            case 5: addEntry(); break;
+            case 6: removeEntry(); break;
+            case 7: modifyEntry(); break;
+            case 8: showEntries(); break;
+            case 9: saveEntriesToFile(); break;
+            case 10: deleteAllEntries(); break;
+            case 11: printf("\nExiting the app. Thank you!\n"); break;
+            default: printf("\nInvalid choice. Please try again.\n");
+        }
+    } while (choice != 11);
+
+    deleteAllEntries();
+    return 0;
+}
